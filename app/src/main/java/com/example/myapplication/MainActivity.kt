@@ -12,42 +12,47 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.example.myapplication.ui.theme.ProfileScreen
 
-val LightPrimary = Color(0xFF771C1B)
-val LightOnPrimary = Color(0xFFFFFFFF)
-val LightPrimaryContainer = Color(0xFFE9C9C8)
-val LightSecondary = Color(0xFF9E4744)
-val LightSurface = Color(0xFFFFFBFF)
-val LightOnSurfaceVariant = Color(0xFF5A4D4C)
+// ====================================================
+// LICEO MAROON & GOLD COLOR SCHEME
+// ====================================================
 
-val DarkPrimary = Color(0xFFE0A3A0)
-val DarkOnPrimary = Color(0xFF511313)
-val DarkPrimaryContainer = Color(0xFF651817)
-val DarkSecondary = Color(0xFFD49B99)
-val DarkSurface = Color(0xFF1A1110)
-val DarkOnSurfaceVariant = Color(0xFFC9B8B7)
+// --- Light Palette ---
+val LiceoMaroonPrimary = Color(0xFF800000)          // Liceo Deep Maroon
+val LiceoOnPrimary = Color(0xFFFFFFFF)              // Text/Icon on Maroon
+val LiceoGoldSecondary = Color(0xFFD4AF37)          // Gold Accent
+val LiceoSurfaceLight = Color(0xFFFFF8F6)           // Light warm background
+val LiceoOnSurfaceLight = Color(0xFF221A18)         // Primary text
+val LiceoOnSurfaceVariantLight = Color(0xFF53433F)  // Muted label text
+
+// --- Dark Palette ---
+val LiceoMaroonDarkPrimary = Color(0xFFFFB4AB)      // Light Maroon/Pink Accent
+val LiceoOnPrimaryDark = Color(0xFF560003)          // Dark text on primary
+val LiceoGoldSecondaryDark = Color(0xFFE6C18D)      // Soft Gold Accent
+val LiceoSurfaceDark = Color(0xFF1A1110)            // Dark surface background
+val LiceoOnSurfaceDark = Color(0xFFEDE0DE)          // Light text
+val LiceoOnSurfaceVariantDark = Color(0xFFD8C2BC)   // Soft label text
 
 private val LightColorScheme = lightColorScheme(
-    primary = LightPrimary,
-    onPrimary = LightOnPrimary,
-    primaryContainer = LightPrimaryContainer,
-    secondary = LightSecondary,
-    surface = LightSurface,
-    onSurfaceVariant = LightOnSurfaceVariant
+    primary = LiceoMaroonPrimary,
+    onPrimary = LiceoOnPrimary,
+    secondary = LiceoGoldSecondary,
+    surface = LiceoSurfaceLight,
+    onSurface = LiceoOnSurfaceLight,
+    onSurfaceVariant = LiceoOnSurfaceVariantLight
 )
 
 private val DarkColorScheme = darkColorScheme(
-    primary = DarkPrimary,
-    onPrimary = DarkOnPrimary,
-    primaryContainer = DarkPrimaryContainer,
-    secondary = DarkSecondary,
-    surface = DarkSurface,
-    onSurfaceVariant = DarkOnSurfaceVariant
+    primary = LiceoMaroonDarkPrimary,
+    onPrimary = LiceoOnPrimaryDark,
+    secondary = LiceoGoldSecondaryDark,
+    surface = LiceoSurfaceDark,
+    onSurface = LiceoOnSurfaceDark,
+    onSurfaceVariant = LiceoOnSurfaceVariantDark
 )
 
 @Composable
-fun ProfileTheme(
+fun ProfileCardLabTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
@@ -62,7 +67,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ProfileTheme {
+            ProfileCardLabTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.surface
