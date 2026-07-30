@@ -1,4 +1,4 @@
-package com.example.myapplication // ⚠️ Replace with your actual package name at the top of your file
+package com.example.myapplication 
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
