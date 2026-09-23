@@ -1,1 +1,48 @@
+package com.liceo.account.ui
 
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.lifecycle.viewmodel.compose.viewModel
+
+@Composable
+fun LiceoAccountApp(
+    vm: AuthViewModel = viewModel()
+) {
+    var screen by rememberSaveable { mutableStateOf("login") }
+
+    val state = vm.uiState
+
+    if (state is AuthUiState.LoggedIn) {
+        ProfileScreen(
+            user = state.user,
+            onLogout = {
+                vm.logout()
+                screen = "login"
+            }
+        )
+    } else {
+        if (screen == "register") {
+            RegisterScreen(
+                state = state,
+                onCreate = { fullName, email, password, birthdate ->
+                    vm.register(fullName, email, password, birthdate)
+                },
+                onGoToLogin = {
+                    vm.clearMessage()
+                    screen = "login"
+                }
+            )
+        } else {
+            LoginScreen(
+                state = state,
+                onLogin = { email, password ->
+                    vm.login(email, password)
+                },
+                onGoToRegister = {
+                    vm.clearMessage()
+                    screen = "register"
+                }
+            )
+        }
+    }
+}
